@@ -1,3 +1,4 @@
+# DOM文档对象模型
 ## Node
 * appendChild：将child追加到parent的子节点的最后面
 ```
@@ -25,9 +26,13 @@ ____________________________________________
 
 ## 元素属性型API
 * setAttribute:给元素设置属性
-> element.setAttribute(name, value);
+```
+element.setAttribute(name, value);
+```
 * getAttribute:返回指定的特性名相应的特性值
-> var value = element.getAttribute("id");
+```
+var value = element.getAttribute("id");
+```
 ## 样式相关API
 ```
 elem.style.color = 'red';
@@ -49,4 +54,4 @@ _____________________________________________
 * getElementById：根据ID查找元素，大小写敏感，如果有多个结果，只返回第一个
 * getElementsByName
 * getElementsByTagName：根据标签查找元素， * 表示查询所有标签，返回一个 HTMLCollection
-* getElementsByClassName：根据类名查找元素，多个类名用空格分隔，返回一个 HTMLCollection 
+* getElementsByClassName：根据类名查找元素，多个类名用空格分隔，返回一个 HTMLCollection
