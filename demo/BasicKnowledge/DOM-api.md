@@ -1,6 +1,8 @@
 ## Node
 * appendChild：将child追加到parent的子节点的最后面
-> parent.appendChild(child);
+```
+parent.appendChild(child);
+```
 * insertBefore:将某个节点插入到另外一个节点的前面
 > parentNode.insertBefore(newNode, refNode);
 * removeChild:删除指定的子节点并返回子节点
@@ -22,9 +24,11 @@ ____________________________________________
 * getAttribute:返回指定的特性名相应的特性值
 > var value = element.getAttribute("id");
 ## 样式相关API
-> elem.style.color = 'red';
+```
+elem.style.color = 'red';
 elem.style.setProperty('font-size', '16px');
 elem.style.removeProperty('color');
+```
 _____________________________________________
 ## DOM操作
 * createElement：创建元素
