@@ -4,12 +4,17 @@
 parent.appendChild(child);
 ```
 * insertBefore:将某个节点插入到另外一个节点的前面
-> parentNode.insertBefore(newNode, refNode);
+```
+parentNode.insertBefore(newNode, refNode);
+```
 * removeChild:删除指定的子节点并返回子节点
-> var deletedChild = parent.removeChild(node);
+```
+var deletedChild = parent.removeChild(node);
+```
 * replaceChild:用于将一个节点替换另一个节点
-> parent.replaceChild(newChild, oldChild);
-
+```
+parent.replaceChild(newChild, oldChild);
+```
 * compareDocumentPosition:比较两个节点中关系
 * contains 
 * isEqualNode 检查两个节点是否完全相同
