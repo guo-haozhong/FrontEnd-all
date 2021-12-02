@@ -7,25 +7,25 @@ const FULLFILLED = 'fullfilled'
 const REJECTED = 'rejected'
 
 function Promise(executor) {
-    var _this = this
-    _this.state = PENDING //状态
-    _this.value = undefined //成功结果
-    _this.reason = undefined //失败原因
-    _this.onFulfilled = [];//成功的回调
-    _this.onRejected = []; //失败的回调
+    var self = this
+    self.state = PENDING //状态
+    self.value = undefined //成功结果
+    self.reason = undefined //失败原因
+    self.onFulfilled = [];//成功的回调
+    self.onRejected = []; //失败的回调
 
     function resolve(value) {
-        if (_this.state === PENDING) {
-            _this.value = value
-            _this.state = FULLFILLED
-            _this.onFulfilled.forEach(fn => fn(_this.value))
+        if (self.state === PENDING) {
+            self.value = value
+            self.state = FULLFILLED
+            self.onFulfilled.forEach(fn => fn(self.value))
         }
     }
     function reject(reason) {
-        if (_this.state === PENDING) {
-            _this.reason = reason
-            _this.state = REJECTED
-            _this.onRejected.forEach(fn => fn(_this.reason))
+        if (self.state === PENDING) {
+            self.reason = reason
+            self.state = REJECTED
+            self.onRejected.forEach(fn => fn(self.reason))
         }
     }
     try {

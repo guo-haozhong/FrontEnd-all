@@ -6,25 +6,25 @@ const PENDING = 'pending'
 const FULLFILLED = 'fullfilled'
 const REJECTED = 'rejected'
 function Promise(executor) {
-    var _this = this
-    _this.state = PENDING //状态
-    _this.value = undefined //成功结果
-    _this.reason = undefined //失败原因
-    _this.onFulfilled = [];//成功的回调
-    _this.onRejected = []; //失败的回调
+    var self = this
+    self.state = PENDING //状态
+    self.value = undefined //成功结果
+    self.reason = undefined //失败原因
+    self.onFulfilled = [];//成功的回调
+    self.onRejected = []; //失败的回调
 
     function resolve(value) {
-        if (_this.state === PENDING) {
-            _this.value = value
-            _this.state = FULLFILLED
-            _this.onFulfilled.forEach(fn => fn(_this.value))
+        if (self.state === PENDING) {
+            self.value = value
+            self.state = FULLFILLED
+            self.onFulfilled.forEach(fn => fn(self.value))
         }
     }
     function reject(reason) {
-        if (_this.state === PENDING) {
-            _this.reason = reason
-            _this.state = REJECTED
-            _this.onRejected.forEach(fn => fn(_this.reason))
+        if (self.state === PENDING) {
+            self.reason = reason
+            self.state = REJECTED
+            self.onRejected.forEach(fn => fn(self.reason))
         }
     }
     try {
@@ -35,46 +35,46 @@ function Promise(executor) {
 }
 
 Promise.prototype.then = function (onFullfilled, onRejected) {
-    var _this = this //promise1
+    var self = this //promise1
     onFullfilled = typeof onFullfilled === 'function' ? onFullfilled : (value) => value
     onRejected = typeof onRejected === 'function' ? onRejected : (reason) => { throw reason }
 
     var promise2 = new Promise((resolve, reject) => {
-        if (_this.state === FULLFILLED) {
+        if (self.state === FULLFILLED) {
             setTimeout(() => {
                 try {
-                    let x = onFullfilled(_this.value)
+                    let x = onFullfilled(self.value)
                     resolvePromise(promise2, x, resolve, reject)
                 } catch (error) {
                     reject(error)
                 }
             })
         }
-        else if (_this.state === REJECTED) {
+        else if (self.state === REJECTED) {
             setTimeout(() => {
                 try {
-                    let x = onRejected(_this.reason)
+                    let x = onRejected(self.reason)
                     resolvePromise(promise2, x, resolve, reject)
                 } catch (error) {
                     reject(error)
                 }
             })
         }
-        else if (_this.state === PENDING) {
-            _this.onFulfilled.push(() => {
+        else if (self.state === PENDING) {
+            self.onFulfilled.push(() => {
                 setTimeout(() => {
                     try {
-                        let x = onFullfilled(_this.value)
+                        let x = onFullfilled(self.value)
                         resolvePromise(promise2, x, resolve, reject)
                     } catch (error) {
                         reject(error)
                     }
                 })
             })
-            _this.onRejected.push(() => {
+            self.onRejected.push(() => {
                 setTimeout(() => {
                     try {
-                        let x = onRejected(_this.reason)
+                        let x = onRejected(self.reason)
                         resolvePromise(promise2, x, resolve, reject)
                     } catch (error) {
                         reject(error)

@@ -1,5 +1,5 @@
 const Promise = require('./MyPromise')
-
+// const Promise=require('./Promise')
 //简易版示例
 // var myPromise = new Promise(function (resolve, reject) {
 //     console.log('start执行')
