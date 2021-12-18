@@ -36,6 +36,9 @@ function Promise(executor) {
 }
 
 Promise.prototype.then = function (onFullfilled, onRejected) {
+    console.log('====================================');
+    console.log(this);
+    console.log('====================================');
     if (this.state === FULLFILLED) {
         typeof onFullfilled === 'function' && onFullfilled(this.value)
     }
